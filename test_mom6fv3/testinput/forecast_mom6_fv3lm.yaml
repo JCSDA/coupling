@@ -1,0 +1,3 @@
+files:
+  - testinput/forecast_mom6.yaml
+  - testinput/forecast_fv3lm.yaml

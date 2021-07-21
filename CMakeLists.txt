@@ -35,6 +35,7 @@ find_package( oops 1.1.0 REQUIRED )
 ################################################################################
 
 add_subdirectory( src )
+add_subdirectory( test_mom6fv3 )
 add_subdirectory( test )
 add_subdirectory( tools )
 

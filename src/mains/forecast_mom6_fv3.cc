@@ -5,8 +5,8 @@
  * which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-#include "oops/l95/src/lorenz95/L95Traits.h"
-#include "oops/qg/model/QgTraits.h"
+#include "fv3jedi/Utilities/Traits.h"
+#include "soca/Traits.h"
 
 #include "oops/generic/instantiateModelFactory.h"
 #include "oops/runs/Forecast.h"
@@ -17,11 +17,11 @@
 int main(int argc,  char ** argv) {
   oops::Run run(argc, argv);
 
-  oops::instantiateModelFactory<qg::QgTraits>();
-  oops::instantiateModelFactory<lorenz95::L95Traits>();
+  oops::instantiateModelFactory<soca::Traits>();
+  oops::instantiateModelFactory<fv3jedi::Traits>();
 
-  oops::TwoApplications< oops::Forecast<lorenz95::L95Traits>,
-                         oops::Forecast<qg::QgTraits>          > apps;
+  oops::TwoApplications< oops::Forecast<soca::Traits>,
+                         oops::Forecast<fv3jedi::Traits>          > apps;
 
   return run.execute(apps);
 }
