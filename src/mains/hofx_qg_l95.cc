@@ -8,6 +8,8 @@
 #include "../../l95/src/lorenz95/L95Traits.h"
 #include "../../qg/model/QgTraits.h"
 
+#include "oops/l95/src/lorenz95/instantiateL95ChangeVarFactory.h"
+#include "oops/qg/instantiateQgChangeVarFactory.h"
 #include "oops/runs/HofX4D.h"
 #include "oops/runs/Run.h"
 
@@ -15,10 +17,10 @@
 
 int main(int argc,  char ** argv) {
   oops::Run run(argc, argv);
-
+  lorenz95::instantiateL95ChangeVarFactory();
+  qg::instantiateQgChangeVarFactory();
   oops::TwoApplications<oops::HofX4D<lorenz95::L95Traits, lorenz95::L95ObsTraits>,
                         oops::HofX4D<qg::QgTraits, qg::QgObsTraits>                 > apps;
 
   return run.execute(apps);
 }
-

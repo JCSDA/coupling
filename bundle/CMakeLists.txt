@@ -52,7 +52,7 @@ endif ()
 
 option(BUILD_FMS "download and build fms" ON)
 if ( BUILD_FMS )
-  ecbuild_bundle( PROJECT fms           GIT "https://github.com/jcsda/FMS.git"                      UPDATE BRANCH feature/release-stable-main+inputnamelist )
+  ecbuild_bundle( PROJECT fms           GIT "https://github.com/jcsda/FMS.git"                      UPDATE BRANCH release-stable )
 endif ()
 
 
@@ -81,10 +81,10 @@ endif ()
 
 option(BUILD_FV3JEDI "download and build fv3-jedi" ON)
 if ( BUILD_FV3JEDI)
-  ecbuild_bundle( PROJECT fv3         GIT "https://github.com/jcsda/GFDL_atmos_cubed_sphere.git"          BRANCH feature/release-stable-main+inputnamelist UPDATE )
+  ecbuild_bundle( PROJECT fv3         GIT "https://github.com/jcsda/GFDL_atmos_cubed_sphere.git"          BRANCH release-stable UPDATE )
   ecbuild_bundle( PROJECT femps       GIT "https://github.com/jcsda-internal/femps.git"                   BRANCH develop UPDATE )
-  ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/jcsda-internal/fv3-jedi-linearmodel.git"    BRANCH feature/release-stable-main+inputnamelist UPDATE )
-  ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/jcsda-internal/fv3-jedi.git"                BRANCH feature/release-stable-main+inputnamelist UPDATE )
+  ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/jcsda-internal/fv3-jedi-linearmodel.git"    BRANCH develop UPDATE )
+  ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/jcsda-internal/fv3-jedi.git"                BRANCH develop UPDATE )
   ecbuild_bundle( PROJECT fv3-jedi-data GIT "https://github.com/JCSDA-internal/fv3-jedi-data.git"         BRANCH develop UPDATE )
 endif ()
 

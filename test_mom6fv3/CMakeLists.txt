@@ -1,8 +1,15 @@
 set( coupling_mom6fv3_test_input
   testinput/forecast_mom6_fv3lm.yaml
   testinput/forecast_mom6.yaml
+  testinput/hofx_mom6_fv3lm.yaml
 )
 
+set( coupling_mom6fv3_test_ref
+  testref/forecast_fv3lm.ref
+  testref/hofx_fv3lm.ref
+)
+
+# create directories needed by coupling and symlink test yaml's
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testinput)
 foreach(FILENAME ${coupling_mom6fv3_test_input})
      get_filename_component(filename ${FILENAME} NAME )
@@ -15,8 +22,12 @@ endforeach(FILENAME)
 # soca tests
 ################################################################################
 
+# create directories needed by soca
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/RESTART)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/INPUT)
+
 set( soca_data_files
-  ${soca_SOURCE_DIR}/test/Data/godas_sst_bgerr.nc
   ${soca_SOURCE_DIR}/test/Data/rossrad.dat
   ${soca_SOURCE_DIR}/test/Data/fields_metadata.yml
 )
@@ -45,10 +56,21 @@ set( soca_model_restarts
 
 set( soca_test_yaml
   ${soca_SOURCE_DIR}/test/testinput/gridgen.yml
+  ${soca_SOURCE_DIR}/test/testinput/hofx_4d.yml
 )
 
-# Create Data directory for model input and symlink all files
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/INPUT)
+set( soca_obs
+  ${soca_SOURCE_DIR}/test/Data/Obs/adt.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/icec.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/icefb.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/prof.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/sss.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/sst.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/uocn_surface.nc
+  ${soca_SOURCE_DIR}/test/Data/Obs/vocn_surface.nc
+)
+
+# symlink model config files
 foreach(FILENAME ${soca_model_restarts})
      get_filename_component(filename ${FILENAME} NAME )
      execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
@@ -80,8 +102,13 @@ foreach(FILENAME ${soca_test_yaml})
            ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} )
 endforeach(FILENAME)
 
-# MOM's output directory
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/RESTART)
+# soca obs
+foreach(FILENAME ${soca_obs})
+     get_filename_component(filename ${FILENAME} NAME )
+     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+           ${FILENAME}
+         ${CMAKE_CURRENT_BINARY_DIR}/Data/${filename} )
+endforeach(FILENAME)
 
 # Create soca geometry/grid
 ecbuild_add_test( TARGET test_soca_gridgen
@@ -89,62 +116,77 @@ ecbuild_add_test( TARGET test_soca_gridgen
                   ARGS testinput/gridgen.yml
                   COMMAND ${CMAKE_BINARY_DIR}/bin/soca_gridgen.x )
 
-# soca forecast output directory
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data)
+# Test mom6 solo forecast
 ecbuild_add_test( TARGET test_soca_forecast
                   MPI 2
                   ARGS testinput/forecast_mom6.yaml
                   COMMAND ${CMAKE_BINARY_DIR}/bin/soca_forecast.x )
 
+# Test soca h(x) with mom6 solo
+ecbuild_add_test( TARGET test_soca_hofx
+                  MPI 2
+                  ARGS testinput/hofx_4d.yml
+                  COMMAND ${CMAKE_BINARY_DIR}/bin/soca_hofx.x )
+
 ################################################################################
 # fv3-jedi tests
 ################################################################################
+
+# create directories needed by fv3-jedi
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testoutput)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/obs)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fieldsets)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
+
+# Ref files
+foreach(FILENAME ${coupling_mom6fv3_test_ref})
+     get_filename_component(filename ${FILENAME} NAME )
+     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+           ${CMAKE_CURRENT_SOURCE_DIR}/${FILENAME}
+           ${CMAKE_CURRENT_BINARY_DIR}/testoutput/${filename} )
+endforeach(FILENAME)
 
 # FV3 config files
 set( fv3jedi_test_fv3files
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/field_table
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/fmsmpp.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/akbk64.nc4
+  ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/akbk72.nc4
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_gfs_c12.nml
+  ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_geos_c12.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/inputpert_4dvar.nml
 )
 
 # Field sets
 set( fv3jedi_field_sets
   ${fv3jedi_SOURCE_DIR}/test/Data/fieldsets/dynamics.yaml
-)
-
-# Restarts
-set( fv3jedi_restarts
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.coupler.res
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile1.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile2.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile3.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile4.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile5.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_core.res.tile6.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile1.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile2.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile3.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile4.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile5.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_tracer.res.tile6.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile1.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile2.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile3.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile4.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile5.nc
-  ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs/gfs_c12/bkg/20180414.210000.fv_srf_wnd.res.tile6.nc
+  ${fv3jedi_SOURCE_DIR}/test/Data/fieldsets/ufo.yaml
 )
 
 set( fv3jedi_test_yaml
   ${fv3jedi_SOURCE_DIR}/test/testinput/forecast_fv3lm.yaml
+  ${fv3jedi_SOURCE_DIR}/test/testinput/hofx_fv3lm.yaml
 )
 
+# Link to crtm coef files
+# TODO relative path needs to go, depends on fv3jedi_get_crtm_test_data
+execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+                 ../../../fv3-jedi/test/Data/crtm
+                 ${CMAKE_CURRENT_BINARY_DIR}/Data/crtm)
+
+# Link restarts (gfs, geos, ...)
+execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs
+                 ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs)
+
+# Link fv3-jedi tier1 obs
+execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/obs
+                 ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
+
 # Test fv3lm forecast
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fieldsets)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs/gfs_c12/bkg)
 foreach(FILENAME ${fv3jedi_field_sets})
      get_filename_component(filename ${FILENAME} NAME )
      execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
@@ -157,18 +199,6 @@ foreach(FILENAME ${fv3jedi_test_fv3files})
            ${FILENAME}
            ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files/${filename} )
 endforeach(FILENAME)
-foreach(FILENAME ${fv3jedi_restarts})
-     get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-           ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs/gfs_c12/bkg/${filename} )
-endforeach(FILENAME)
-
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
-ecbuild_add_test( TARGET test_fv3jedi_forecast
-                  MPI 6
-                  ARGS testinput/forecast_fv3lm.yaml
-                  COMMAND ${CMAKE_BINARY_DIR}/bin/fv3jedi_forecast.x )
 
 # fv3jedi yaml config files
 foreach(FILENAME ${fv3jedi_test_yaml})
@@ -178,6 +208,17 @@ foreach(FILENAME ${fv3jedi_test_yaml})
            ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} )
 endforeach(FILENAME)
 
+# Test fv3lm forecast
+ecbuild_add_test( TARGET test_fv3jedi_forecast
+                  MPI 6
+                  ARGS testinput/forecast_fv3lm.yaml
+                  COMMAND ${CMAKE_BINARY_DIR}/bin/fv3jedi_forecast.x )
+
+# Test fv3-jedi h(x) with fv3lm/geos
+ecbuild_add_test( TARGET test_fv3jedi_hofx
+                  MPI 6
+                  ARGS testinput/hofx_fv3lm.yaml
+                  COMMAND ${CMAKE_BINARY_DIR}/bin/fv3jedi_hofx.x )
 
 ################################################################################
 # Coupling tests
@@ -188,3 +229,9 @@ ecbuild_add_test( TARGET  test_forecast_mom6_fv3lm
                   COMMAND forecast_mom6_fv3.x
                   ARGS    testinput/forecast_mom6_fv3lm.yaml
                   TEST_DEPENDS test_soca_forecast test_fv3jedi_forecast  )
+
+ecbuild_add_test( TARGET  test_hofx_mom6_fv3lm
+                  MPI 12
+                  COMMAND hofx_mom6_fv3.x
+                  ARGS    testinput/hofx_mom6_fv3lm.yaml
+                  TEST_DEPENDS test_soca_hofx test_fv3jedi_hofx  )

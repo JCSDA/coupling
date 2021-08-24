@@ -15,3 +15,6 @@ ecbuild_add_executable( TARGET  forecast_mom6_fv3.x
                         SOURCES forecast_mom6_fv3.cc
                         LIBS    coupling soca fv3jedi )
 
+ecbuild_add_executable( TARGET  hofx_mom6_fv3.x
+                        SOURCES hofx_mom6_fv3.cc
+                        LIBS    coupling soca fv3jedi )
