@@ -1,11 +1,16 @@
 set( coupling_mom6fv3_test_input
-  testinput/forecast_mom6_fv3lm.yaml
+  testinput/coupledgeometry.yaml
+  testinput/coupledmodelaux.yaml
+  testinput/coupledmodel.yaml
+  testinput/forecast_fv3lm_mom6.yaml
   testinput/forecast_mom6.yaml
-  testinput/hofx_mom6_fv3lm.yaml
+  testinput/forecast_fv3lm.yaml
 )
 
 set( coupling_mom6fv3_test_ref
   testref/forecast_fv3lm.ref
+  testref/forecast_fv3lm_mom6.ref
+  testref/forecast_mom6.ref
   testref/hofx_fv3lm.ref
 )
 
@@ -21,6 +26,8 @@ endforeach(FILENAME)
 ################################################################################
 # soca tests
 ################################################################################
+
+add_subdirectory( executables )
 
 # create directories needed by soca
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data)
@@ -166,7 +173,6 @@ set( fv3jedi_field_sets
 )
 
 set( fv3jedi_test_yaml
-  ${fv3jedi_SOURCE_DIR}/test/testinput/forecast_fv3lm.yaml
   ${fv3jedi_SOURCE_DIR}/test/testinput/hofx_fv3lm.yaml
 )
 
@@ -224,14 +230,29 @@ ecbuild_add_test( TARGET test_fv3jedi_hofx
 # Coupling tests
 ################################################################################
 
-ecbuild_add_test( TARGET  test_forecast_mom6_fv3lm
-                  MPI 12
-                  COMMAND forecast_mom6_fv3.x
-                  ARGS    testinput/forecast_mom6_fv3lm.yaml
-                  TEST_DEPENDS test_soca_forecast test_fv3jedi_forecast  )
+# Test CoupledGeometry class
+ecbuild_add_test( TARGET  test_coupled_geometry_fv3_mom6
+                  SOURCES executables/TestCoupledGeometry.cc
+                  MPI 6
+                  ARGS    "testinput/coupledgeometry.yaml"
+                  LIBS    soca fv3jedi )
 
-ecbuild_add_test( TARGET  test_hofx_mom6_fv3lm
-                  MPI 12
-                  COMMAND hofx_mom6_fv3.x
-                  ARGS    testinput/hofx_mom6_fv3lm.yaml
-                  TEST_DEPENDS test_soca_hofx test_fv3jedi_hofx  )
+# Test CoupledModelAux class
+ecbuild_add_test( TARGET  test_coupled_modelaux_fv3_mom6
+                  SOURCES executables/TestCoupledModelAuxControl.cc
+                  MPI 6
+                  ARGS    "testinput/coupledmodelaux.yaml"
+                  LIBS    soca fv3jedi )
+
+# Test CoupledModelAux class
+ecbuild_add_test( TARGET  test_coupled_model_fv3_mom6
+                  SOURCES executables/TestCoupledModel.cc
+                  MPI 6
+                  ARGS    "testinput/coupledmodel.yaml"
+                  LIBS    soca fv3jedi )
+
+# Test CoupledForecast class
+ecbuild_add_test( TARGET  test_coupled_forecast_fv3_mom6
+                  MPI 6
+                  COMMAND coupling_forecast_fv3_mom6.x
+                  ARGS    "testinput/forecast_fv3lm_mom6.yaml" )

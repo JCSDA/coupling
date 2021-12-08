@@ -63,17 +63,15 @@ endif ()
 ecbuild_bundle( PROJECT oops            GIT "https://github.com/jcsda-internal/oops.git"            UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT saber           GIT "https://github.com/jcsda-internal/saber.git"           UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ioda            GIT "https://github.com/jcsda-internal/ioda.git"            UPDATE BRANCH develop )
-ecbuild_bundle( PROJECT ioda-converters GIT "https://github.com/jcsda-internal/ioda-converters.git" UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT gsw             GIT "https://github.com/jcsda-internal/GSW-Fortran.git"     UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ufo             GIT "https://github.com/jcsda-internal/ufo.git"             UPDATE BRANCH develop )
-ecbuild_bundle( PROJECT coupling    SOURCE "../" )
 
 
 #===================================================================================================
 # Optional Model Interfaces
 #===================================================================================================
 
-option(BUILD_SOCA "download and build fv3-jedi" ON)
+option(BUILD_SOCA "download and build soca" ON)
 if ( BUILD_SOCA)
   ecbuild_bundle( PROJECT mom6 GIT "https://github.com/jcsda-internal/MOM6.git"            UPDATE BRANCH main-ecbuild RECURSIVE )
   ecbuild_bundle( PROJECT soca GIT "https://github.com/jcsda-internal/soca.git"            UPDATE BRANCH develop )
@@ -87,6 +85,8 @@ if ( BUILD_FV3JEDI)
   ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/jcsda-internal/fv3-jedi.git"                BRANCH develop UPDATE )
   ecbuild_bundle( PROJECT fv3-jedi-data GIT "https://github.com/JCSDA-internal/fv3-jedi-data.git"         BRANCH develop UPDATE )
 endif ()
+
+ecbuild_bundle( PROJECT coupling    SOURCE "../" )
 
 #===================================================================================================
 

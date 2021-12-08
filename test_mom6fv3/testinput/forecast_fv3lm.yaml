@@ -1,4 +1,5 @@
 forecast length: PT6H
+
 geometry:
   fms initialization:
     namelist filename: Data/fv3files/input_gfs_c12.nml
@@ -9,14 +10,16 @@ geometry:
   npz: 64
   fieldsets:
     - fieldset: Data/fieldsets/dynamics.yaml
+
 model:
   name: FV3LM
   use internal namelist: true
-  tstep: PT15M
+  tstep: PT1H
   lm_do_dyn: 1
   lm_do_trb: 0
   lm_do_mst: 0
   model variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis]
+
 initial condition:
   filetype: gfs
   datapath: Data/inputs/gfs_c12/bkg/
@@ -26,6 +29,7 @@ initial condition:
   filename_sfcw: 20180414.210000.fv_srf_wnd.res.nc
   filename_cplr: 20180414.210000.coupler.res
   state variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis]
+
 output:
   filetype: gfs
   datapath: Data/forecast
@@ -35,4 +39,7 @@ output:
   filename_sfcw: forecast_fv3.fv_srf_wnd.res.nc
   filename_cplr: forecast_fv3.coupler.res
   first: PT0H
-  frequency: PT15M
+  frequency: PT1H
+
+test:
+  reference filename: testoutput/forecast_fv3lm.ref

@@ -1,0 +1,48 @@
+Test     : Initial state:
+Test     : StateCoupled: FV3JEDI
+Test     :  -----------------------------------------------------------------------------------------------
+Test     :  State print | number of fields = 11 | cube sphere face size: C12
+Test     :    u                             : Min = -7.998311e+01, Max = +7.443785e+01, RMS = +1.269962e+01
+Test     :    v                             : Min = -8.004184e+01, Max = +8.021624e+01, RMS = +1.274250e+01
+Test     :    ua                            : Min = -4.631079e+01, Max = +9.136980e+01, RMS = +1.640422e+01
+Test     :    va                            : Min = -6.112541e+01, Max = +7.380730e+01, RMS = +8.406592e+00
+Test     :    T                             : Min = +1.847640e+02, Max = +3.102424e+02, RMS = +2.484510e+02
+Test     :    DELP                          : Min = +4.424700e+01, Max = +3.728065e+03, RMS = +1.940813e+03
+Test     :    sphum                         : Min = +8.463108e-08, Max = +1.906352e-02, RMS = +4.761924e-03
+Test     :    ice_wat                       : Min = -7.707972e-22, Max = +6.371007e-04, RMS = +1.478965e-05
+Test     :    liq_wat                       : Min = -8.216034e-21, Max = +1.054092e-03, RMS = +2.772811e-05
+Test     :    o3mr                          : Min = +2.759108e-08, Max = +1.754712e-05, RMS = +5.601335e-06
+Test     :    phis                          : Min = -2.647795e+02, Max = +4.987891e+04, RMS = +5.969167e+03
+Test     :  -----------------------------------------------------------------------------------------------
+Test     : StateCoupled: SOCA
+Test     :   Valid time: 2018-04-14T21:00:00Z
+Test     :    socn   min=   10.721046   max=   40.441659   mean=   34.544390
+Test     :    tocn   min=   -1.888390   max=   31.700465   mean=    6.017565
+Test     :     ssh   min=   -1.924485   max=    0.927283   mean=   -0.276790
+Test     :    hocn   min=    0.001000   max= 1345.640000   mean=  128.628064
+Test     :    uocn   min=   -0.858169   max=    0.700095   mean=   -0.000259
+Test     :    vocn   min=   -0.766110   max=    1.437777   mean=    0.002197
+Test     : Final state:
+Test     : StateCoupled: FV3JEDI
+Test     :  -----------------------------------------------------------------------------------------------
+Test     :  State print | number of fields = 11 | cube sphere face size: C12
+Test     :    u                             : Min = -7.372162e+01, Max = +7.726501e+01, RMS = +1.286135e+01
+Test     :    v                             : Min = -9.074577e+01, Max = +7.715519e+01, RMS = +1.354505e+01
+Test     :    ua                            : Min = -6.219010e+01, Max = +7.785120e+01, RMS = +1.430564e+01
+Test     :    va                            : Min = -5.696590e+01, Max = +9.019101e+01, RMS = +1.112397e+01
+Test     :    T                             : Min = +1.850621e+02, Max = +3.072814e+02, RMS = +2.484405e+02
+Test     :    DELP                          : Min = +4.424700e+01, Max = +3.828197e+03, RMS = +1.940949e+03
+Test     :    sphum                         : Min = +9.233075e-08, Max = +1.894465e-02, RMS = +4.744154e-03
+Test     :    ice_wat                       : Min = -6.950439e-08, Max = +2.925480e-04, RMS = +1.089907e-05
+Test     :    liq_wat                       : Min = -1.319416e-07, Max = +6.733687e-04, RMS = +1.943358e-05
+Test     :    o3mr                          : Min = +3.138757e-08, Max = +1.750439e-05, RMS = +5.614791e-06
+Test     :    phis                          : Min = -2.647795e+02, Max = +4.987891e+04, RMS = +5.969167e+03
+Test     :  -----------------------------------------------------------------------------------------------
+Test     : StateCoupled: SOCA
+Test     :   Valid time: 2018-04-15T03:00:00Z
+Test     :    socn   min=   10.717151   max=   40.441636   mean=   34.545265
+Test     :    tocn   min=   -1.888347   max=   31.768646   mean=    6.016725
+Test     :     ssh   min=   -1.905732   max=    0.907499   mean=   -0.276544
+Test     :    hocn   min=    0.001000   max= 1345.640000   mean=  128.628049
+Test     :    uocn   min=   -0.839280   max=    0.691555   mean=    0.000273
+Test     :    vocn   min=   -0.897519   max=    0.946051   mean=    0.000564

@@ -28,15 +28,13 @@ find_package( jedicmake QUIET )
 find_package( eckit 1.11.6 REQUIRED )
 
 # oops
-find_package( oops 1.1.0 REQUIRED )
+find_package( oops 1.2.0 REQUIRED )
 
 ################################################################################
 # Sources
 ################################################################################
 
-add_subdirectory( src )
 add_subdirectory( test_mom6fv3 )
-add_subdirectory( test )
 add_subdirectory( tools )
 
 ## Global Tests
@@ -49,4 +47,3 @@ ecbuild_add_test( TARGET coupling_coding_norms
 ## Export package
 ecbuild_install_project( NAME coupling )
 ecbuild_print_summary()
-
