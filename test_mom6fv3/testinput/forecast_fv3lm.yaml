@@ -21,7 +21,7 @@ model:
   model variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis]
 
 initial condition:
-  filetype: gfs
+  filetype: fms restart
   datapath: Data/inputs/gfs_c12/bkg/
   filename_core: 20180414.210000.fv_core.res.nc
   filename_trcr: 20180414.210000.fv_tracer.res.nc
@@ -31,7 +31,7 @@ initial condition:
   state variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis]
 
 output:
-  filetype: gfs
+  filetype: fms restart
   datapath: Data/forecast
   filename_core: forecast_fv3.fv_core.res.nc
   filename_trcr: forecast_fv3.fv_tracer.res.nc
