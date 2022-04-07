@@ -161,6 +161,7 @@ set( fv3jedi_test_fv3files
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/fmsmpp.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/akbk64.nc4
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/akbk72.nc4
+  ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/akbk127.nc4
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_gfs_c12.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_geos_c12.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/inputpert_4dvar.nml
