@@ -16,7 +16,7 @@ ecbuild_bundle_initialize()
 
 
 # jedi-cmake
-ecbuild_bundle( PROJECT jedicmake GIT "https://github.com/jcsda-internal/jedi-cmake.git" UPDATE BRANCH develop )
+ecbuild_bundle( PROJECT jedicmake GIT "https://github.com/jcsda-internal/jedi-cmake.git" UPDATE BRANCH develop RECURSIVE )
 include( jedicmake/cmake/Functions/git_functions.cmake  )
 
 
