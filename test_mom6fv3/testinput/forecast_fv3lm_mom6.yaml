@@ -9,8 +9,9 @@ geometry:
     npx: 13
     npy: 13
     npz: 127
-    fieldsets:
-      - fieldset: Data/fieldsets/dynamics.yaml
+    field metadata override: Data/fieldsets/gfs-restart.yaml
+    #fieldsets:
+    #  - fieldset: Data/fieldsets/dynamics.yaml
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml
@@ -66,4 +67,5 @@ output:
     type: fc
 
 test:
-  reference filename: testoutput/forecast_fv3lm_mom6.ref
+  reference filename: testref/forecast_fv3lm_mom6.ref
+  test output filename: testoutput/forecast_fv3lm_mom6.test

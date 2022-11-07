@@ -1,18 +1,18 @@
 geometry:   # coupled geometry (MOM6 and FV3)
   SOCA:
-    mom6_input_nml: ./inputnml/input.nml
-    fields metadata: ./fields_metadata.yml
+    geom_grid_file: soca_gridspec.nc
+    mom6_input_nml: data_static/72x35x25/input.nml
+    fields metadata: data_static/fields_metadata.yml
 
   FV3JEDI:
     fms initialization:
-      namelist filename: Data/fv3files/input_gfs_c12.nml
-      field table filename: Data/fv3files/field_table_gmao
+      namelist filename: Data/fv3files/fmsmpp.nml
+      field table filename: Data/fv3files/field_table_gfdl
     akbk: Data/fv3files/akbk127.nc4
     npx: 13
     npy: 13
     npz: 127
-    fieldsets:
-      - fieldset: Data/fieldsets/dynamics.yaml
+    field metadata override: Data/fieldsets/gfs-restart.yaml
 
 model aux control: # coupled model bias (MOM6 and FV3)
   SOCA:
