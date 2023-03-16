@@ -1,0 +1,75 @@
+window begin: 2020-12-14T18:00:00Z
+window length: PT6H
+geometry:
+  FV3JEDI:
+    fms initialization:
+      namelist filename: Data/fv3files/input_gfs_c12.nml
+      field table filename: Data/fv3files/field_table_gmao
+    akbk: Data/fv3files/akbk127.nc4
+    npx: 13
+    npy: 13
+    npz: 127
+    field metadata override: Data/fieldsets/gfs-restart.yaml
+    #fieldsets:
+    #  - fieldset: Data/fieldsets/dynamics.yaml
+  SOCA:
+    mom6_input_nml: ./inputnml/input.nml
+    fields metadata: ./fields_metadata.yml
+  FV3JEDI variables: [air_temperature, air_pressure, air_pressure_levels,
+                      water_area_fraction, land_area_fraction, ice_area_fraction, surface_snow_area_fraction,
+                      surface_temperature_where_sea, surface_temperature_where_land,
+                      surface_temperature_where_ice, surface_temperature_where_snow,
+                      vegetation_area_fraction, leaf_area_index, volume_fraction_of_condensed_water_in_soil,
+                      soil_temperature, surface_snow_thickness, vegetation_type_index, soil_type,
+                      humidity_mixing_ratio, mole_fraction_of_ozone_in_air, mole_fraction_of_carbon_dioxide_in_air,
+                      mass_content_of_cloud_liquid_water_in_atmosphere_layer, effective_radius_of_cloud_liquid_water_particle,
+                      mass_content_of_cloud_ice_in_atmosphere_layer, effective_radius_of_cloud_ice_particle, surface_wind_speed,
+                      surface_wind_from_direction]
+  SOCA variables: []
+state:
+  FV3JEDI:
+    datetime: 2020-12-14T21:00:00Z
+    filetype: fms restart
+    datapath: Data/inputs/gfs_c12/bkg/
+    filename_core: 20201214.210000.fv_core.res.nc
+    filename_trcr: 20201214.210000.fv_tracer.res.nc
+    filename_sfcd: 20201214.210000.sfc_data.nc
+    filename_sfcw: 20201214.210000.fv_srf_wnd.res.nc
+    filename_cplr: 20201214.210000.coupler.res
+    state variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis,
+                      slmsk,sheleg,tsea,vtype,stype,vfrac,stc,smc,snwdph,
+                      u_srf,v_srf,f10m]
+  SOCA:
+    read_from_file: 1
+    date: &date 2020-12-14T21:00:00Z
+    basename: ./INPUT/
+    ocn_filename: MOM.res.nc
+    state variables: [socn, tocn, ssh, hocn, uocn, vocn]
+
+observations:
+  observers:
+  - obs space:
+      name: AMSUA-NOAA19
+      obsdatain:
+        engine:
+          type: H5File
+          obsfile: Data/obs/testinput_tier_1/amsua_n19_obs_2020121500_m.nc4
+      obsdataout:
+        engine:
+          type: H5File
+          obsfile: Data/hofx/amsua_n19_hofx_gfs_2020121500_m.nc4
+      simulated variables: [brightnessTemperature]
+      channels: 1-15
+    obs operator:
+      name: CRTM
+      Absorbers: [H2O,O3,CO2]
+      Clouds: [Water, Ice]
+      Cloud_Fraction: 1.0
+      obs options:
+        Sensor_ID: amsua_n19
+        EndianType: little_endian
+        CoefficientPath: Data/crtm/
+
+test:
+  reference filename: testref/hofx3d_fv3_mom6_dontusemom6.ref
+  test output filename: testoutput/hofx3d_fv3_mom6_dontusemom6.test

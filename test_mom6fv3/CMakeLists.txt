@@ -4,10 +4,14 @@ set( coupling_mom6fv3_test_input
   testinput/coupledmodelaux.yaml
   testinput/coupledmodel.yaml
   testinput/forecast_fv3lm_mom6.yaml
+  testinput/hofx3d_fv3_mom6.yaml
+  testinput/hofx3d_fv3_mom6_dontusemom6.yaml
 )
 
 set( coupling_mom6fv3_test_ref
   testref/forecast_fv3lm_mom6.ref
+  testref/hofx3d_fv3_mom6.ref
+  testref/hofx3d_fv3_mom6_dontusemom6.ref
 )
 
 # create directories needed by coupling and symlink test yaml's
@@ -110,11 +114,11 @@ ecbuild_add_test( TARGET test_soca_gridgen
 
 # create directories needed by fv3-jedi
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testoutput)
-#file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/obs)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/obs)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fieldsets)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
-#file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
 
 # Ref files
 foreach(FILENAME ${coupling_mom6fv3_test_ref})
@@ -155,9 +159,9 @@ execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
                  ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs)
 
 # Link fv3-jedi tier1 obs
-#execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-#                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/obs
-#                 ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
+execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/obs
+                 ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
 
 # Test fv3lm forecast
 foreach(FILENAME ${fv3jedi_field_sets})
@@ -206,8 +210,20 @@ ecbuild_add_test( TARGET  test_coupled_model_fv3_mom6
                   ARGS    "testinput/coupledmodel.yaml"
                   LIBS    soca fv3jedi )
 
-# Test CoupledForecast class
+# Test Forecast application with Coupled trait
 ecbuild_add_test( TARGET  test_coupled_forecast_fv3_mom6
                   MPI 6
                   COMMAND coupling_forecast_fv3_mom6.x
                   ARGS    "testinput/forecast_fv3lm_mom6.yaml" )
+
+# Test HofX3D application with Coupled trait
+ecbuild_add_test( TARGET  test_coupled_hofx3d_fv3_mom6
+                  MPI 6
+                  COMMAND coupling_hofx3d_fv3_mom6.x
+                  ARGS    "testinput/hofx3d_fv3_mom6.yaml" )
+
+# Test HofX3D application with Coupled trait (only using fv3 state)
+ecbuild_add_test( TARGET  test_coupled_hofx3d_fv3_mom6_dontusemom6
+                  MPI 6
+                  COMMAND coupling_hofx3d_fv3_mom6.x
+                  ARGS    "testinput/hofx3d_fv3_mom6_dontusemom6.yaml" )
