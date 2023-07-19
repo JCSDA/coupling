@@ -27,7 +27,8 @@ ecbuild_bundle( PROJECT vader           GIT "https://github.com/jcsda-internal/v
 ecbuild_bundle( PROJECT saber           GIT "https://github.com/jcsda-internal/saber.git"           UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT ioda            GIT "https://github.com/jcsda-internal/ioda.git"            UPDATE BRANCH develop )
 ecbuild_bundle( PROJECT gsw             GIT "https://github.com/jcsda-internal/GSW-Fortran.git"     UPDATE BRANCH develop )
-ecbuild_bundle( PROJECT ufo             GIT "https://github.com/jcsda-internal/ufo.git"             UPDATE BRANCH develop )
+ecbuild_bundle( PROJECT crtm            GIT "https://github.com/JCSDA/CRTMv3.git"                   UPDATE BRANCH develop )
+ecbuild_bundle( PROJECT ufo             GIT "https://github.com/jcsda-internal/ufo.git"             UPDATE BRANCH feature/no_crtm_for_misval_sst )
 
 
 #===================================================================================================
