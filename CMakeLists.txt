@@ -5,7 +5,7 @@
 
 cmake_minimum_required( VERSION 3.12 )
 
-project( coupling VERSION 0.0.1 LANGUAGES CXX )
+project( coupling VERSION 1.0.0 LANGUAGES CXX )
 
 ## Ecbuild integration
 find_package( ecbuild 3.3.2 REQUIRED )
