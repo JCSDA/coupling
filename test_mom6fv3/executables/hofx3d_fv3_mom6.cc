@@ -15,8 +15,13 @@
 #include "oops/runs/HofX3D.h"
 #include "oops/runs/Run.h"
 
+#include "ufo/instantiateObsErrorFactory.h"
+#include "ufo/instantiateObsFilterFactory.h"
+
 int main(int argc,  char ** argv) {
   oops::Run run(argc, argv);
+  ufo::instantiateObsErrorFactory();
+  ufo::instantiateObsFilterFactory();
   oops::HofX3D<oops::TraitCoupled<fv3jedi::Traits, soca::Traits>,
                ufo::ObsTraits> hofx;
 
