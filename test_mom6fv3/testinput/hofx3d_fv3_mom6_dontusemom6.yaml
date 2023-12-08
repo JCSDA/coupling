@@ -1,5 +1,6 @@
-window begin: 2020-12-14T18:00:00Z
-window length: PT6H
+time window:
+  begin: 2020-12-14T18:00:00Z
+  length: PT6H
 geometry:
   FV3JEDI:
     fms initialization:
