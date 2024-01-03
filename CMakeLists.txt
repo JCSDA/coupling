@@ -5,7 +5,7 @@
 
 cmake_minimum_required( VERSION 3.12 )
 
-project( coupling VERSION 1.0.0 LANGUAGES CXX )
+project( coupling VERSION 1.1.0 LANGUAGES CXX )
 
 ## Ecbuild integration
 find_package( ecbuild 3.3.2 REQUIRED )
@@ -25,10 +25,10 @@ include( GNUInstallDirs )
 find_package( jedicmake QUIET )
 
 # eckit
-find_package( eckit 1.11.6 REQUIRED )
+find_package( eckit 1.24.4 REQUIRED )
 
 # oops
-find_package( oops 1.2.0 REQUIRED )
+find_package( oops 1.9.0 REQUIRED )
 
 ################################################################################
 # Sources
