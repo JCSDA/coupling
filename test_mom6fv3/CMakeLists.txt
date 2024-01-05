@@ -153,14 +153,23 @@ execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
                  ../../../fv3-jedi/test/Data/crtm
                  ${CMAKE_CURRENT_BINARY_DIR}/Data/crtm)
 
+if (ENABLE_FV3_JEDI_DATA)
+  message(STATUS "Use test data from fv3-jedi-data repository")
+  set (fv3-jedi_data_testinput_tier_1_local "${CMAKE_SOURCE_DIR}/fv3-jedi-data/testinput_tier_1")
+else()
+  message(STATUS "Use test data from downloaded data")
+  set (fv3-jedi_data_tag "1.8.0")
+  set (fv3-jedi_data_testinput_tier_1_local "${CMAKE_SOURCE_DIR}/test-data-release/fv3-jedi/${fv3-jedi_data_tag}/testinput_tier_1")
+endif()
+
 # Link restarts (gfs, geos, ...)
 execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/inputs
+                 ${fv3-jedi_data_testinput_tier_1_local}/inputs
                  ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs)
 
 # Link fv3-jedi tier1 obs
 execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-                 ${fv3_jedi_data_SOURCE_DIR}/testinput_tier_1/obs
+                 ${fv3-jedi_data_testinput_tier_1_local}/obs
                  ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
 
 # Test fv3lm forecast
