@@ -13,6 +13,7 @@ geometry:   # coupled geometry (MOM6 and FV3)
     npy: 13
     npz: 127
     field metadata override: Data/fieldsets/gfs-restart.yaml
+  FV3JEDI exclude variables: [surface_temperature_where_sea]
 
 model aux control: # coupled model bias (MOM6 and FV3)
   SOCA:

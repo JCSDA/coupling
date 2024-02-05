@@ -12,7 +12,7 @@ geometry:   # coupled geometry (MOM6 and FV3)
     npx: 13
     npy: 13
     npz: 127
-
+  FV3JEDI exclude variables: [surface_temperature_where_sea]
 # Coupled model delegates to other models, but does not
 # itself satisfy the atlas interface requirements
 test atlas interface: false

@@ -15,6 +15,7 @@ geometry:
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml
+  FV3JEDI exclude variables: [surface_temperature_where_sea]
 
 initial condition:
   FV3JEDI:

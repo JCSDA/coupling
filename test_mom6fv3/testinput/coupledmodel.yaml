@@ -12,6 +12,7 @@ geometry:
     npy: 13
     npz: 127
     field metadata override: Data/fieldsets/gfs-restart.yaml
+  FV3JEDI exclude variables: [surface_temperature_where_sea]
 
 initial condition:
   FV3JEDI:
