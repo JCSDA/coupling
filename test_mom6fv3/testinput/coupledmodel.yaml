@@ -43,10 +43,9 @@ model:
     lm_do_mst: 0
     model variables: [u,v,ua,va,T,DELP,sphum,ice_wat,liq_wat,o3mr,phis]
   SOCA:
-    name: MOM6solo
+    name: Identity
     tstep: PT1H
-    advance_mom6: 1
-    model variables: [socn, tocn, ssh, hocn]
+
 
 model aux control:
   FV3JEDI:
