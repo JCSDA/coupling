@@ -36,7 +36,7 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/RESTART)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/INPUT)
 
 set( soca_data_files
-  ${soca_SOURCE_DIR}/test/Data/rossrad.dat
+  ${soca_SOURCE_DIR}/test/Data/rossrad.nc
   ${soca_SOURCE_DIR}/test/Data/fields_metadata.yml
 )
 
