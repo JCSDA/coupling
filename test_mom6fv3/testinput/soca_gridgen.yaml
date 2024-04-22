@@ -1,10 +1,9 @@
 geometry:
   geom_grid_file: soca_gridspec.nc
   save_local_domain: true
-  full_init: true
   mom6_input_nml: data_static/72x35x25/input.nml
   fields metadata: fields_metadata.yml
-  rossby file: rossrad.dat
+  rossby file: rossrad.nc
 
 test:
   reference filename: testref/gridgen.test
