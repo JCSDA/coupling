@@ -33,7 +33,13 @@ initial condition:
     date: &date 2020-12-14T21:00:00Z
     basename: ./INPUT/
     ocn_filename: MOM.res.nc
-    state variables: [socn, tocn, ssh, hocn, uocn, vocn]
+    state variables:
+    - sea_water_salinity
+    - sea_water_potential_temperature
+    - sea_surface_height_above_geoid
+    - sea_water_cell_thickness
+    - eastward_sea_water_velocity
+    - northward_sea_water_velocity
 
 model:
   name: Coupled
