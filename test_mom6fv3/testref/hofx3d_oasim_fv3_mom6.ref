@@ -1,0 +1,58 @@
+State: 
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 23 | cube sphere face size: C12
+u_component_of_native_D_grid_wind            | Min:-1.3496839860265715e+02 Max:+1.2784919740746092e+02 RMS:+1.5837341454338318e+01
+v_component_of_native_D_grid_wind            | Min:-1.4277243559862308e+02 Max:+1.2322577990478851e+02 RMS:+1.7374587166101488e+01
+eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
+northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
+air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
+air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
+specific_humidity                            | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.6949161001360413e-03
+cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
+cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
+ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
+sfc_geopotential_height_times_grav           | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+slmsk                                        | Min:+0.0000000000000000e+00 Max:+2.0000000000000004e+00 RMS:+6.6320345634919742e-01
+sheleg                                       | Min:+0.0000000000000000e+00 Max:+2.2567456107076271e+02 RMS:+2.2252056516899735e+01
+sea_surface_temperature                      | Min:+2.3043579248495433e+02 Max:+3.1044963990964948e+02 RMS:+2.8690245614068226e+02
+vtype                                        | Min:+0.0000000000000000e+00 Max:+1.9000000000000000e+01 RMS:+5.8103714740683028e+00
+stype                                        | Min:+0.0000000000000000e+00 Max:+1.6000000000000000e+01 RMS:+4.3370710375995900e+00
+vfrac                                        | Min:+0.0000000000000000e+00 Max:+9.3219258634721558e-01 RMS:+1.9053595264038967e-01
+stc                                          | Min:+2.2223002424872243e+02 Max:+3.0975553391105245e+02 RMS:+2.8900260478860838e+02
+soilMoistureVolumetric                       | Min:+2.0000000000000000e-02 Max:+1.0000000000000002e+00 RMS:+8.6190627415939025e-01
+totalSnowDepth                               | Min:+0.0000000000000000e+00 Max:+1.3341658273772905e+03 RMS:+1.7946530243648584e+02
+surface_eastward_wind                        | Min:-1.8722600156315828e+01 Max:+2.4455707420472059e+01 RMS:+5.8872798759881544e+00
+surface_northward_wind                       | Min:-1.4810023277701474e+01 Max:+1.8440369636988279e+01 RMS:+5.0073790446570898e+00
+f10m                                         | Min:+9.3271108264498082e-01 Max:+1.0501151003063822e+00 RMS:+9.9545546080163505e-01
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-14T21:00:00Z
+   sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+   ozone_thickness            min=275.0000000000000000   max=275.0000000000000000   mean=275.0000000000000000
+   water_vapor                min=1.2000000000000000   max=1.2000000000000000   mean=1.1999999999999940
+   wind_speed_at_surface      min=6.0000000000000000   max=6.0000000000000000   mean=6.0000000000000000
+   air_pressure_at_surface    min=999.0000000000000000   max=999.0000000000000000   mean=999.0000000000000000
+   relative_humidity          min=89.0000000000000000   max=89.0000000000000000   mean=89.0000000000000000
+   cloud_liquid_water_path   min=163.0000000000000000   max=163.0000000000000000   mean=163.0000000000000000
+   cloud_area_fraction_in_atmosphere_layer   min=80.0000000000000000 max=80.0000000000000000   mean=80.0000000000000000
+   aerosol_optical_thickness   min=0.1600000000000000   max=0.1600000000000000   mean=0.1599999999999991
+   single_scattering_albedo   min=0.7100000000000000   max=0.7100000000000000 mean=0.7100000000000010
+   asymmetry_parameter   min=0.9700000000000000   max=0.9700000000000000   mean=0.9700000000000025
+   Carbon_nitrogen_detritus_concentration   min=0.0000000000000000 max=36.4473495483398438   mean=11.9246365098421538
+   Particulate_inorganic_carbon   min=0.0000000000000000 max=15.6032886505126953   mean=0.4339728213475172
+   colored_dissolved_organic_carbon   min=0.0000000000000000  max=3.7243623733520508   mean=0.7019319244747348
+   diatom_concentration   min=0.0000000000000000   max=0.8428835868835449  mean=0.0282550365505272
+   chlorophyte_concentration   min=0.0000000000000000   max=0.5329248905181885   mean=0.0120699827222408
+   cyano-bacteria_concentration   min=0.0000000000000000  max=0.2649140357971191   mean=0.0001816014342784
+   coccolithophore_concentration   min=0.0000000000000000  max=0.2565885186195374   mean=0.0003692322683884
+   dinoflagellate_concentration   min=0.0000000000000000  max=0.5569311976432800   mean=0.0010108495174879
+   phaeocystis_concentration   min=0.0000000000000000  max=1.1911514997482300 mean=0.0086563055148040
+
+H(x): 
+Radiance nobs= 4000 Min=0.0000000000000000, Max=0.0034292273056569, RMS=0.0004377506789430
+
+End H(x)

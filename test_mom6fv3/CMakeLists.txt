@@ -6,12 +6,14 @@ set( coupling_mom6fv3_test_input
   testinput/forecast_fv3lm_mom6.yaml
   testinput/hofx3d_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6_dontusemom6.yaml
+  testinput/hofx3d_oasim_fv3_mom6.yaml
 )
 
 set( coupling_mom6fv3_test_ref
   testref/forecast_fv3lm_mom6.ref
   testref/hofx3d_fv3_mom6.ref
   testref/hofx3d_fv3_mom6_dontusemom6.ref
+  testref/hofx3d_oasim_fv3_mom6.ref
 )
 
 # create directories needed by coupling and symlink test yaml's
@@ -60,6 +62,7 @@ set( soca_model_restarts
   ${soca_SOURCE_DIR}/test/Data/72x35x25/INPUT/sfc.res.nc
   ${soca_SOURCE_DIR}/test/Data/72x35x25/INPUT/ocean_hgrid.nc
   ${soca_SOURCE_DIR}/test/Data/72x35x25/INPUT/ocean_topog.nc
+  ${soca_SOURCE_DIR}/test/Data/72x35x25/restarts/NOBM.res.nc
 )
 
 set( soca_test_ref
@@ -236,3 +239,11 @@ ecbuild_add_test( TARGET  test_coupled_hofx3d_fv3_mom6_dontusemom6
                   MPI 6
                   COMMAND coupling_hofx3d_fv3_mom6.x
                   ARGS    "testinput/hofx3d_fv3_mom6_dontusemom6.yaml" )
+
+if( ${oasim_FOUND} ) 
+# Test HofX3D application with Coupled trait with oasim
+ecbuild_add_test( TARGET  test_coupled_hofx3d_oasim_fv3_mom6
+                  MPI 6
+                  COMMAND coupling_hofx3d_fv3_mom6.x
+                  ARGS    "testinput/hofx3d_oasim_fv3_mom6.yaml" )
+endif( ${oasim_FOUND} )
