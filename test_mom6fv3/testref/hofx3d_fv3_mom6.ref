@@ -2,9 +2,7 @@ State:
 StateCoupled: FV3JEDI
 
 ----------------------------------------------------------------------------------------------------
-State print | number of fields = 23 | cube sphere face size: C12
-u_component_of_native_D_grid_wind            | Min:-1.3496839860265715e+02 Max:+1.2784919740746092e+02 RMS:+1.5837341454338318e+01
-v_component_of_native_D_grid_wind            | Min:-1.4277243559862308e+02 Max:+1.2322577990478851e+02 RMS:+1.7374587166101488e+01
+State print | number of fields = 21 | cube sphere face size: C12
 eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
 northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
 air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
