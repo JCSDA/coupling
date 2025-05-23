@@ -10,9 +10,6 @@ geometry:
     npx: 13
     npy: 13
     npz: 127
-    field metadata override: Data/fieldsets/gfs-restart.yaml
-    #fieldsets:
-    #  - fieldset: Data/fieldsets/dynamics.yaml
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml

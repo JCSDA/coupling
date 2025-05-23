@@ -119,7 +119,6 @@ ecbuild_add_test( TARGET test_soca_gridgen
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testoutput)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/obs)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fieldsets)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
 
@@ -141,13 +140,6 @@ set( fv3jedi_test_fv3files
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_gfs_c12.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/input_geos_c12.nml
   ${fv3jedi_SOURCE_DIR}/test/Data/fv3files/inputpert_4dvar.nml
-)
-
-# Field sets
-set( fv3jedi_field_sets
-  ${fv3jedi_SOURCE_DIR}/test/Data/fieldsets/dynamics.yaml
-  ${fv3jedi_SOURCE_DIR}/test/Data/fieldsets/ufo.yaml
-  ${fv3jedi_SOURCE_DIR}/test/Data/fieldmetadata/gfs-restart.yaml
 )
 
 # Link to crtm coef files
@@ -176,12 +168,6 @@ execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
                  ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
 
 # Test fv3lm forecast
-foreach(FILENAME ${fv3jedi_field_sets})
-     get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-           ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/Data/fieldsets/${filename} )
-endforeach(FILENAME)
 foreach(FILENAME ${fv3jedi_test_fv3files})
      get_filename_component(filename ${FILENAME} NAME )
      execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
