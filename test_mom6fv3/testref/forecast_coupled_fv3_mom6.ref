@@ -1,0 +1,50 @@
+Initial state: 
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
+northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
+air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
+air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.6949161001360413e-03
+cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
+cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
+ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
+geopotential_height_times_gravity_at_surface | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-14T21:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591663
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Final state: 
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
+northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
+air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
+air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.6949161001360413e-03
+cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
+cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
+ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
+geopotential_height_times_gravity_at_surface | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-15T03:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591663
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147

@@ -14,13 +14,20 @@
 
 #include "oops/coupled/instantiateCoupledFactory.h"
 #include "oops/coupled/TraitCoupled.h"
+#include "oops/interface/ModelBase.h"
+
+#include "../src/ModelUFS.h"
 
 int main(int argc,  char ** argv) {
   oops::Run run(argc, argv);
 
   oops::instantiateModelFactory<soca::Traits>();
   oops::instantiateModelFactory<fv3jedi::Traits>();
+  oops::instantiateModelFactory<oops::TraitCoupled<fv3jedi::Traits, soca::Traits>>();
   oops::instantiateCoupledFactory<fv3jedi::Traits, soca::Traits>();
+  static oops::interface::ModelMaker<oops::TraitCoupled<fv3jedi::Traits, soca::Traits>,
+                                     coupled_mom6_fv3::ModelUFS>
+       makermodel_("CoupledUFS");
 
   oops::Forecast<oops::TraitCoupled<fv3jedi::Traits, soca::Traits>> fc;
 

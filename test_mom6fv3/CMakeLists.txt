@@ -4,6 +4,7 @@ set( coupling_mom6fv3_test_input
   testinput/coupledmodelaux.yaml
   testinput/coupledmodel.yaml
   testinput/forecast_fv3lm_mom6.yaml
+  testinput/forecast_coupled_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6_dontusemom6.yaml
   testinput/hofx3d_oasim_fv3_mom6.yaml
@@ -11,6 +12,7 @@ set( coupling_mom6fv3_test_input
 
 set( coupling_mom6fv3_test_ref
   testref/forecast_fv3lm_mom6.ref
+  testref/forecast_coupled_fv3_mom6.ref
   testref/hofx3d_fv3_mom6.ref
   testref/hofx3d_fv3_mom6_dontusemom6.ref
   testref/hofx3d_oasim_fv3_mom6.ref
@@ -30,6 +32,7 @@ endforeach(FILENAME)
 # soca tests
 ################################################################################
 
+add_subdirectory( src )
 add_subdirectory( executables )
 
 # create directories needed by soca
@@ -208,11 +211,16 @@ ecbuild_add_test( TARGET  test_coupled_model_fv3_mom6
                   ARGS    "testinput/coupledmodel.yaml"
                   LIBS    soca fv3jedi )
 
-# Test Forecast application with Coupled trait
+# Test Forecast application with Coupled trait (pseudomodel)
 ecbuild_add_test( TARGET  test_coupled_forecast_fv3_mom6
                   MPI 6
                   COMMAND coupling_forecast_fv3_mom6.x
                   ARGS    "testinput/forecast_fv3lm_mom6.yaml" )
+
+ecbuild_add_test( TARGET  test_coupled_forecast_coupled_fv3_mom6
+                  MPI 6
+                  COMMAND coupling_forecast_fv3_mom6.x
+                  ARGS    "testinput/forecast_coupled_fv3_mom6.yaml" )
 
 # Test HofX3D application with Coupled trait
 ecbuild_add_test( TARGET  test_coupled_hofx3d_fv3_mom6
