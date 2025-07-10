@@ -5,6 +5,7 @@ set( coupling_mom6fv3_test_input
   testinput/coupledmodel.yaml
   testinput/forecast_fv3lm_mom6.yaml
   testinput/forecast_coupled_fv3_mom6.yaml
+  testinput/interp_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6_dontusemom6.yaml
   testinput/hofx3d_oasim_fv3_mom6.yaml
@@ -13,6 +14,7 @@ set( coupling_mom6fv3_test_input
 set( coupling_mom6fv3_test_ref
   testref/forecast_fv3lm_mom6.ref
   testref/forecast_coupled_fv3_mom6.ref
+  testref/interp_fv3_mom6.ref
   testref/hofx3d_fv3_mom6.ref
   testref/hofx3d_fv3_mom6_dontusemom6.ref
   testref/hofx3d_oasim_fv3_mom6.ref
@@ -123,6 +125,7 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testoutput)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/obs)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/interp)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
 
 # Ref files
@@ -221,6 +224,12 @@ ecbuild_add_test( TARGET  test_coupled_forecast_coupled_fv3_mom6
                   MPI 6
                   COMMAND coupling_forecast_fv3_mom6.x
                   ARGS    "testinput/forecast_coupled_fv3_mom6.yaml" )
+
+# Test interpolation from soca to fv3
+ecbuild_add_test( TARGET test_interpolate_state_soca_fv3
+                  MPI 6
+                  COMMAND coupling_interp_fv3_mom6.x
+                  ARGS    "testinput/interp_fv3_mom6.yaml" )
 
 # Test HofX3D application with Coupled trait
 ecbuild_add_test( TARGET  test_coupled_hofx3d_fv3_mom6
