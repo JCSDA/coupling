@@ -10,13 +10,13 @@
 #include <ostream>
 #include <string>
 
-#include "oops/interface/ModelBase.h"
 #include "oops/util/Duration.h"
 #include "oops/util/ObjectCounter.h"
+#include "oops/util/Printable.h"
 
 #include "oops/coupled/GeometryCoupled.h"
+#include "oops/coupled/AuxCoupledModel.h"
 #include "oops/coupled/StateCoupled.h"
-#include "oops/coupled/TraitCoupled.h"
 
 #include "fv3jedi/Utilities/Traits.h"
 #include "soca/Traits.h"
@@ -29,7 +29,7 @@ namespace eckit {
 namespace coupled_mom6_fv3 {
 
 // -------------------------------------------------------------------------------------------------
-class ModelUFS: public oops::interface::ModelBase<oops::TraitCoupled<fv3jedi::Traits, soca::Traits>>,
+class ModelUFS: public util::Printable,
                 private util::ObjectCounter<ModelUFS> {
   typedef oops::GeometryCoupled<fv3jedi::Traits, soca::Traits>  GeometryCoupled_;
   typedef oops::StateCoupled<fv3jedi::Traits, soca::Traits>     StateCoupled_;
@@ -46,7 +46,7 @@ class ModelUFS: public oops::interface::ModelBase<oops::TraitCoupled<fv3jedi::Tr
   const util::Duration & timeResolution() const {return tstep_;}
 
  private:
-  void print(std::ostream &) const;
+  void print(std::ostream &) const override;
   const util::Duration tstep_;
 };
 // -----------------------------------------------------------------------------

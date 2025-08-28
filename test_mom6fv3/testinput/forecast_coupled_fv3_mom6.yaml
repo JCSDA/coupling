@@ -63,9 +63,15 @@ initial condition:
     - northward_sea_water_velocity
 
 model:
-  name: CoupledUFS
+  name: Coupled
   time step: PT1H
   some yaml entry: something
+  FV3JEDI:
+    name: Identity
+    tstep: PT1H
+  SOCA:
+    name: Identity
+    tstep: PT1H
 
 output:
   frequency: PT1H
