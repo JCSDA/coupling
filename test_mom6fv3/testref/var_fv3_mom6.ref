@@ -1,19 +1,23 @@
-State: 
+CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1.7215029060223019e+03, nobs = 468, Jo/n = 3.6784250128681664e+00, err = 1.0017080322541862e+01
+CostJb   : Nonlinear Jb = 0.0000000000000000e+00
+CostFunction: Nonlinear J = 1.7215029060223019e+03
+DRPCGMinimizer: reduction in residual norm = 6.4843076768539165e-01
+CostFunction::addIncrement: Analysis: 
 StateCoupled: FV3JEDI
 
 ----------------------------------------------------------------------------------------------------
 State print | number of fields = 21 | cube sphere face size: C12
 air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
-air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
-cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
-cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
+air_temperature                              | Min:+1.5726936770873749e+02 Max:+3.0671676144899266e+02 RMS:+2.4963969674721943e+02
+cloud_liquid_ice                             | Min:+0.0000000000000000e+00 Max:+3.8505755460218182e-03 RMS:+4.0008287362014108e-05
+cloud_liquid_water                           | Min:+0.0000000000000000e+00 Max:+1.7457146107559298e-02 RMS:+1.5054739223187535e-04
 eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
 eastward_wind_at_surface                     | Min:-1.8722600156315828e+01 Max:+2.4455707420472059e+01 RMS:+5.8872798759881544e+00
 f10m                                         | Min:+9.3271108264498082e-01 Max:+1.0501151003063822e+00 RMS:+9.9545546080163505e-01
 geopotential_height_times_gravity_at_surface | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
 northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
 northward_wind_at_surface                    | Min:-1.4810023277701474e+01 Max:+1.8440369636988279e+01 RMS:+5.0073790446570898e+00
-ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
+ozone_mass_mixing_ratio                      | Min:+0.0000000000000000e+00 Max:+2.3572761383482399e-05 RMS:+4.3568440033018546e-06
 sheleg                                       | Min:+0.0000000000000000e+00 Max:+2.2567456107076271e+02 RMS:+2.2252056516899735e+01
 skin_temperature_at_surface                  | Min:+2.3043579248495433e+02 Max:+3.1044963990964948e+02 RMS:+2.8690245614068226e+02
 slmsk                                        | Min:+0.0000000000000000e+00 Max:+2.0000000000000004e+00 RMS:+6.6320345634919742e-01
@@ -23,19 +27,23 @@ stype                                        | Min:+0.0000000000000000e+00 Max:+
 totalSnowDepth                               | Min:+0.0000000000000000e+00 Max:+1.3341658273772905e+03 RMS:+1.7946530243648584e+02
 vfrac                                        | Min:+0.0000000000000000e+00 Max:+9.3219258634721558e-01 RMS:+1.9053595264038967e-01
 vtype                                        | Min:+0.0000000000000000e+00 Max:+1.9000000000000000e+01 RMS:+5.8103714740683028e+00
-water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.6949161001360413e-03
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.7000570139139808e-03
 ----------------------------------------------------------------------------------------------------
 
 StateCoupled: SOCA
 
   Valid time: 2020-12-14T21:00:00Z
-   socn   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525095
-   tocn   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
-    ssh   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591663
-   hocn   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065027280
-   uocn   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
-   vocn   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
-H(x): 
-AMSUA-NOAA19 nobs= 690 Min=148.6813387274665104, Max=291.4669188182228368, RMS=231.7902182829930666
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8884171959573481   max=31.7002610598447134   mean=6.0175533414683935
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591663
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+AuxCoupledModel: FV3JEDI
 
-End H(x)
+
+AuxCoupledModel: SOCA
+
+CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1849.7454977621534908, nobs = 468, Jo/n = 3.9524476447909263, err = 10.0170803225418616
+CostJb   : Nonlinear Jb = 0.0002814108670189
+CostFunction: Nonlinear J = 1849.7457791730205372

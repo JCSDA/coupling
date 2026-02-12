@@ -9,6 +9,7 @@ set( coupling_mom6fv3_test_input
   testinput/hofx3d_fv3_mom6.yaml
   testinput/hofx3d_fv3_mom6_dontusemom6.yaml
   testinput/hofx3d_oasim_fv3_mom6.yaml
+  testinput/var_fv3_mom6.yaml
 )
 
 set( coupling_mom6fv3_test_ref
@@ -18,6 +19,7 @@ set( coupling_mom6fv3_test_ref
   testref/hofx3d_fv3_mom6.ref
   testref/hofx3d_fv3_mom6_dontusemom6.ref
   testref/hofx3d_oasim_fv3_mom6.ref
+  testref/var_fv3_mom6.ref
 )
 
 # create directories needed by coupling and symlink test yaml's
@@ -93,6 +95,9 @@ foreach(FILENAME ${soca_model_param} ${soca_data_files})
            ${FILENAME}
            ${CMAKE_CURRENT_BINARY_DIR}/${filename} )
 endforeach(FILENAME)
+execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+          ${CMAKE_CURRENT_SOURCE_DIR}/testinput/fields_metadata_coupled.yml
+          ${CMAKE_CURRENT_BINARY_DIR}/fields_metadata_coupled.yml )
 
 # FMS input.nml that may be overwritten during the testing
 foreach(FILENAME ${soca_model_namelist})
@@ -127,6 +132,7 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/forecast)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/interp)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/hofx)
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/var)
 
 # Ref files
 foreach(FILENAME ${coupling_mom6fv3_test_ref})
@@ -247,3 +253,9 @@ ecbuild_add_test( TARGET  test_coupled_hofx3d_oasim_fv3_mom6
                   COMMAND coupling_hofx3d_fv3_mom6.x
                   ARGS    "testinput/hofx3d_oasim_fv3_mom6.yaml" )
 endif( ${oasim_FOUND} )
+
+# Test Variational application with Coupled trait
+ecbuild_add_test( TARGET  test_coupled_var_fv3_mom6
+                  MPI 6
+                  COMMAND coupling_var_fv3_mom6.x
+                  ARGS    "testinput/var_fv3_mom6.yaml" )
