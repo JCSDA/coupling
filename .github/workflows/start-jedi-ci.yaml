@@ -43,7 +43,7 @@ jobs:
           container_version: 'latest'
           target_project_name: coupling
           unittest_tag: coupling
-          unittest_dependencies: crtm fv3-jedi fv3-jedi-lm fv3-jedi-data gsw ioda oasim oops saber soca ufo vader ufo-data ioda-data
+          test_dependencies: crtm fv3-jedi fv3-jedi-lm fv3-jedi-data gsw ioda oasim oops saber soca ufo vader ufo-data ioda-data
           test_script: run_tests.sh
           target_repo_dir: target_repository
           bundle_branch: develop
