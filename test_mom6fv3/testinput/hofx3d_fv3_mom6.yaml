@@ -13,7 +13,12 @@ geometry:
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml
-  FV3JEDI exclude variables: [skin_temperature_at_surface_where_sea]
+  FV3JEDI exclude variables:
+  - skin_temperature_at_surface_where_sea
+  - sea_surface_height_above_geoid
+  - sea_water_cell_thickness
+  - sea_water_potential_temperature
+  - sea_water_salinity
 
 state:
   FV3JEDI:

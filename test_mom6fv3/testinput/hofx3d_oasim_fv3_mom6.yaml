@@ -13,7 +13,31 @@ geometry:
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml
-  FV3JEDI exclude variables: [skin_temperature_at_surface_where_sea]
+  FV3JEDI exclude variables:
+  - skin_temperature_at_surface_where_sea
+  - sea_surface_height_above_geoid
+  - sea_water_cell_thickness
+  - sea_water_potential_temperature
+  - sea_water_salinity
+  # the below is very hacky and should be fixed
+  # we're passing atmosphere variables through soca (which assigns it constant values in the field_metadata file!)
+  - ozone_thickness
+  - water_vapor
+  - relative_humidity
+  - cloud_area_fraction_in_atmosphere_layer
+  - cloud_liquid_water_path
+  - aerosol_optical_thickness
+  - single_scattering_albedo
+  - asymmetry_parameter
+  SOCA include variables:
+  - ozone_thickness
+  - water_vapor
+  - relative_humidity
+  - cloud_area_fraction_in_atmosphere_layer
+  - cloud_liquid_water_path
+  - aerosol_optical_thickness
+  - single_scattering_albedo
+  - asymmetry_parameter
 
 state:
   FV3JEDI:

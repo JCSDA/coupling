@@ -13,7 +13,7 @@ geometry:
   SOCA:
     mom6_input_nml: ./inputnml/input.nml
     fields metadata: ./fields_metadata.yml
-  SOCA include variables: []
+  SOCA variables: []
 state:
   FV3JEDI:
     datetime: 2020-12-14T21:00:00Z
