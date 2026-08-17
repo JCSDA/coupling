@@ -3,9 +3,10 @@ list( APPEND test_files
   cpplint.py
 )
 
+file( MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 foreach(FILENAME ${test_files})
-  execute_process( COMMAND ${CMAKE_COMMAND} -E copy
+  file( COPY_FILE
      ${PROJECT_SOURCE_DIR}/tools/${FILENAME}
-     ${CMAKE_BINARY_DIR}/bin/${PROJECT_NAME}_${FILENAME} )
+     ${CMAKE_BINARY_DIR}/bin/${PROJECT_NAME}_${FILENAME} ONLY_IF_DIFFERENT )
 endforeach(FILENAME)
 

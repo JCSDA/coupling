@@ -27,9 +27,9 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testinput)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/testref)
 foreach(FILENAME ${coupling_mom6fv3_test_input})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${CMAKE_CURRENT_SOURCE_DIR}/${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 ################################################################################
@@ -76,43 +76,45 @@ set( soca_test_ref
   ${soca_SOURCE_DIR}/test/testref/gridgen.test
 )
 # create static data directory, and symlink all files.
-execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-          ${soca_SOURCE_DIR}/test/Data
-          ${CMAKE_CURRENT_BINARY_DIR}/data_static )
+file( CREATE_LINK
+      ${soca_SOURCE_DIR}/test/Data
+      ${CMAKE_CURRENT_BINARY_DIR}/data_static SYMBOLIC )
 
 # symlink model config files
 foreach(FILENAME ${soca_model_restarts})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/INPUT/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/INPUT/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 # MOM's resource files
 foreach(FILENAME ${soca_model_param} ${soca_data_files})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/${filename} SYMBOLIC )
 endforeach(FILENAME)
-execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-          ${CMAKE_CURRENT_SOURCE_DIR}/testinput/fields_metadata_coupled.yml
-          ${CMAKE_CURRENT_BINARY_DIR}/fields_metadata_coupled.yml )
+file( CREATE_LINK
+      ${CMAKE_CURRENT_SOURCE_DIR}/testinput/fields_metadata_coupled.yml
+      ${CMAKE_CURRENT_BINARY_DIR}/fields_metadata_coupled.yml SYMBOLIC )
 
 # FMS input.nml that may be overwritten during the testing
+# file(COPY_FILE) does not create the destination directory, and nothing else
+# creates inputnml/ -- `cmake -E copy` used to create it implicitly.
+file( MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/inputnml )
 foreach(FILENAME ${soca_model_namelist})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E copy
-           ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/inputnml/${filename} )
+     file( COPY_FILE ${FILENAME}
+           ${CMAKE_CURRENT_BINARY_DIR}/inputnml/${filename} ONLY_IF_DIFFERENT )
 endforeach(FILENAME)
 
 # soca test ref files
 foreach(FILENAME ${soca_test_ref})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/testref/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/testref/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 # Create soca geometry/grid
@@ -137,9 +139,9 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Data/var)
 # Ref files
 foreach(FILENAME ${coupling_mom6fv3_test_ref})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${CMAKE_CURRENT_SOURCE_DIR}/${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/testref/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/testref/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 # FV3 config files
@@ -153,9 +155,9 @@ set( fv3jedi_test_fv3files
 
 # Link to crtm coef files
 # TODO relative path needs to go, depends on fv3jedi_get_crtm_test_data
-execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-                 ../../../fv3-jedi/test/Data/crtm
-                 ${CMAKE_CURRENT_BINARY_DIR}/Data/crtm)
+file( CREATE_LINK
+      ../../../fv3-jedi/test/Data/crtm
+      ${CMAKE_CURRENT_BINARY_DIR}/Data/crtm SYMBOLIC )
 
 find_package( fv3-jedi-data QUIET )
 if (fv3-jedi-data_FOUND)
@@ -168,29 +170,29 @@ else()
 endif()
 
 # Link restarts (gfs, geos, ...)
-execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-                 ${fv3-jedi_data_testinput_tier_1_local}/inputs
-                 ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs)
+file( CREATE_LINK
+      ${fv3-jedi_data_testinput_tier_1_local}/inputs
+      ${CMAKE_CURRENT_BINARY_DIR}/Data/inputs SYMBOLIC )
 
 # Link fv3-jedi tier1 obs
-execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
-                 ${fv3-jedi_data_testinput_tier_1_local}/obs
-                 ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1)
+file( CREATE_LINK
+      ${fv3-jedi_data_testinput_tier_1_local}/obs
+      ${CMAKE_CURRENT_BINARY_DIR}/Data/obs/testinput_tier_1 SYMBOLIC )
 
 # Test fv3lm forecast
 foreach(FILENAME ${fv3jedi_test_fv3files})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/Data/fv3files/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 # fv3jedi yaml config files
 foreach(FILENAME ${fv3jedi_test_yaml})
      get_filename_component(filename ${FILENAME} NAME )
-     execute_process( COMMAND ${CMAKE_COMMAND} -E create_symlink
+     file( CREATE_LINK
            ${FILENAME}
-           ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} )
+           ${CMAKE_CURRENT_BINARY_DIR}/testinput/${filename} SYMBOLIC )
 endforeach(FILENAME)
 
 ################################################################################
