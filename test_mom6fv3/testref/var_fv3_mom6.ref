@@ -1,7 +1,7 @@
-CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1.7215029060223019e+03, nobs = 468, Jo/n = 3.6784250128681664e+00, err = 1.0017080322541862e+01
+CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1.7216414561685110e+03, nobs = 468, Jo/n = 3.6787210601891260e+00, err = 1.0017080322541862e+01
 CostJb   : Nonlinear Jb = 0.0000000000000000e+00
-CostFunction: Nonlinear J = 1.7215029060223019e+03
-DRPCGMinimizer: reduction in residual norm = 6.4843076768539165e-01
+CostFunction: Nonlinear J = 1.7216414561685110e+03
+DRPCGMinimizer: reduction in residual norm = 6.4902381520051022e-01
 CostFunction::addIncrement: Analysis: 
 StateCoupled: FV3JEDI
 
@@ -9,8 +9,8 @@ StateCoupled: FV3JEDI
 State print | number of fields = 21 | cube sphere face size: C12
 air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
 air_temperature                              | Min:+1.5726936770873749e+02 Max:+3.0671676144899266e+02 RMS:+2.4963969674721943e+02
-cloud_liquid_ice                             | Min:+0.0000000000000000e+00 Max:+3.8505755460218182e-03 RMS:+4.0008287362014108e-05
-cloud_liquid_water                           | Min:+0.0000000000000000e+00 Max:+1.7457146107559298e-02 RMS:+1.5054739223187535e-04
+cloud_liquid_ice                             | Min:+0.0000000000000000e+00 Max:+3.8446400048799535e-03 RMS:+3.9958798272088581e-05
+cloud_liquid_water                           | Min:+0.0000000000000000e+00 Max:+1.7432126889567408e-02 RMS:+1.5041606209669040e-04
 eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
 eastward_wind_at_surface                     | Min:-1.8722600156315828e+01 Max:+2.4455707420472059e+01 RMS:+5.8872798759881544e+00
 geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
@@ -44,6 +44,6 @@ AuxCoupledModel: FV3JEDI
 
 AuxCoupledModel: SOCA
 
-CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1849.7454977621534908, nobs = 468, Jo/n = 3.9524476447909263, err = 10.0170803225418616
-CostJb   : Nonlinear Jb = 0.0002814108670189
-CostFunction: Nonlinear J = 1849.7457791730205372
+CostJo   : Nonlinear Jo(AMSUA-NOAA19) = 1849.9115588764725544, nobs = 468, Jo/n = 3.9528024762317790, err = 10.0170803225418616
+CostJb   : Nonlinear Jb = 0.0002806174474711
+CostFunction: Nonlinear J = 1849.9118394939200698
