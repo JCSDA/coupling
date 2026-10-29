@@ -4,10 +4,10 @@ StateCoupled: FV3JEDI
 ----------------------------------------------------------------------------------------------------
 State print | number of fields = 9 | cube sphere face size: C12
 air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
-air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382458e+02
+air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382455e+02
 cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
 cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
-eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933670e+01
+eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933666e+01
 geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
 northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
 ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
@@ -17,34 +17,209 @@ water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+
 StateCoupled: SOCA
 
   Valid time: 2020-12-14T21:00:00Z
-   socn   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525095
-   tocn   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
-    ssh   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591663
-   hocn   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065027280
-   uocn   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
-   vocn   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
-Final state: 
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
 StateCoupled: FV3JEDI
 
 ----------------------------------------------------------------------------------------------------
 State print | number of fields = 9 | cube sphere face size: C12
-air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7879215756694975e+03 RMS:+9.5763238815070474e+02
-air_temperature                              | Min:+1.5988471892992013e+02 Max:+3.0532606244942286e+02 RMS:+2.4956586366595346e+02
-cloud_liquid_ice                             | Min:-1.9734683683900240e-07 Max:+3.8458166605041593e-04 RMS:+1.2223028149960717e-05
-cloud_liquid_water                           | Min:-2.9854138751664047e-07 Max:+9.5303868410569583e-04 RMS:+2.6434310486702661e-05
-eastward_wind                                | Min:-1.1070009644282058e+02 Max:+1.4163063718619006e+02 RMS:+2.1597328551287056e+01
+air_pressure_thickness                       | Min:+6.0599994659423817e-01 Max:+1.7947824740983988e+03 RMS:+9.5767736977910954e+02
+air_temperature                              | Min:+1.5727112567986427e+02 Max:+3.0671885029730902e+02 RMS:+2.4964139399382455e+02
+cloud_liquid_ice                             | Min:-1.3536651718203996e-21 Max:+5.0754207489580477e-04 RMS:+1.5795718671717992e-05
+cloud_liquid_water                           | Min:-6.4683322812381749e-21 Max:+9.8037403300115758e-04 RMS:+3.3869746788463320e-05
+eastward_wind                                | Min:-9.9870309951732608e+01 Max:+1.6846199862531310e+02 RMS:+2.2146985103933666e+01
 geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
-northward_wind                               | Min:-9.3068656748655741e+01 Max:+8.6682367017289010e+01 RMS:+9.3329257958989089e+00
-ozone_mass_mixing_ratio                      | Min:+1.2727838449561818e-08 Max:+1.7010093104308929e-05 RMS:+4.3536671156000658e-06
-water_vapor_mixing_ratio_wrt_moist_air       | Min:+2.9779557242490017e-07 Max:+1.8375216334654366e-02 RMS:+4.6492795513751010e-03
+northward_wind                               | Min:-9.8786769912619121e+01 Max:+1.1111138963306223e+02 RMS:+1.0634298691496223e+01
+ozone_mass_mixing_ratio                      | Min:-2.6515889976660251e-09 Max:+2.3572761383482399e-05 RMS:+4.3568440033160102e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+0.0000000000000000e+00 Max:+1.8639534078307159e-02 RMS:+4.6949161001360413e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-14T21:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7853286332971038e+03 RMS:+9.5764763584306240e+02
+air_temperature                              | Min:+1.5732301613258457e+02 Max:+3.0618706202870851e+02 RMS:+2.4962829792707865e+02
+cloud_liquid_ice                             | Min:-6.4488278197864981e-08 Max:+4.7913047477743213e-04 RMS:+1.4781518019764494e-05
+cloud_liquid_water                           | Min:-1.1106252146664383e-07 Max:+9.7829135767009412e-04 RMS:+3.2088223193590693e-05
+eastward_wind                                | Min:-9.5149985021157306e+01 Max:+1.5207470767893815e+02 RMS:+2.1000848340704952e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-8.4205335712763230e+01 Max:+1.0136553777831750e+02 RMS:+9.2476775207002220e+00
+ozone_mass_mixing_ratio                      | Min:+8.7158695797821672e-09 Max:+2.1855811451254036e-05 RMS:+4.3562277747037142e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+6.2875432106472562e-08 Max:+1.8602554595224408e-02 RMS:+4.6870695315062117e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-14T22:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7735074017642255e+03 RMS:+9.5766914238907043e+02
+air_temperature                              | Min:+1.5760663713150313e+02 Max:+3.0595945068590038e+02 RMS:+2.4961417993409245e+02
+cloud_liquid_ice                             | Min:-1.4276313647375327e-07 Max:+4.5581338289166294e-04 RMS:+1.4017163617444464e-05
+cloud_liquid_water                           | Min:-2.5304379682875736e-07 Max:+9.6627830268367803e-04 RMS:+3.0594648595156836e-05
+eastward_wind                                | Min:-9.3828308522074721e+01 Max:+1.4940736094997692e+02 RMS:+2.1226436713900597e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-8.5070365842669361e+01 Max:+1.0073256613205366e+02 RMS:+9.2634331240969114e+00
+ozone_mass_mixing_ratio                      | Min:+9.7910938415831601e-09 Max:+2.0367541165435258e-05 RMS:+4.3558005896218308e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+1.1193223208625766e-07 Max:+1.8563241556757409e-02 RMS:+4.6791903634120250e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-14T23:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7712321470647876e+03 RMS:+9.5767883783536388e+02
+air_temperature                              | Min:+1.5815441085152921e+02 Max:+3.0574945394796555e+02 RMS:+2.4959988399148719e+02
+cloud_liquid_ice                             | Min:-1.5888498958825911e-07 Max:+4.3470228236477026e-04 RMS:+1.3433524925757360e-05
+cloud_liquid_water                           | Min:-2.4866507243095208e-07 Max:+9.5067312937982204e-04 RMS:+2.9297510640007811e-05
+eastward_wind                                | Min:-1.0061202358900425e+02 Max:+1.4818830797766637e+02 RMS:+2.1427684472852324e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-8.5791770139223900e+01 Max:+9.8787609897110343e+01 RMS:+9.2729322726902765e+00
+ozone_mass_mixing_ratio                      | Min:+1.1146553020085476e-08 Max:+1.9275224034174720e-05 RMS:+4.3553673164865504e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+1.5409228077304397e-07 Max:+1.8522562746542327e-02 RMS:+4.6715049552695249e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-15T00:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7804096330206667e+03 RMS:+9.5766356355200674e+02
+air_temperature                              | Min:+1.5888518867626158e+02 Max:+3.0558917101455472e+02 RMS:+2.4958674400758903e+02
+cloud_liquid_ice                             | Min:-1.2533617742022357e-07 Max:+4.1505758695363032e-04 RMS:+1.2964144431633206e-05
+cloud_liquid_water                           | Min:-2.4386022941752202e-07 Max:+9.4236779157906103e-04 RMS:+2.8185104046575634e-05
+eastward_wind                                | Min:-1.0673276633871347e+02 Max:+1.4510647119664861e+02 RMS:+2.1546474110973829e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-8.7327652465007446e+01 Max:+9.2906842561876729e+01 RMS:+9.3042789010934293e+00
+ozone_mass_mixing_ratio                      | Min:+1.3404133346427365e-08 Max:+1.8200920723487834e-05 RMS:+4.3548237349350567e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+2.5501915080972067e-07 Max:+1.8479144283565702e-02 RMS:+4.6639238371506721e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-15T01:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7876069566275037e+03 RMS:+9.5764177348074872e+02
+air_temperature                              | Min:+1.5964421060748990e+02 Max:+3.0542082163784607e+02 RMS:+2.4957579601791701e+02
+cloud_liquid_ice                             | Min:-1.3660299789347570e-07 Max:+3.9855652774332316e-04 RMS:+1.2565291925001375e-05
+cloud_liquid_water                           | Min:-2.3549969926945492e-07 Max:+9.4855416114706509e-04 RMS:+2.7240074042533881e-05
+eastward_wind                                | Min:-1.0995996167531969e+02 Max:+1.4504459964637925e+02 RMS:+2.1594709740721836e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-9.2150332996491755e+01 Max:+9.0536808021267589e+01 RMS:+9.3190936485024540e+00
+ozone_mass_mixing_ratio                      | Min:+1.3311319116970039e-08 Max:+1.7013631810801551e-05 RMS:+4.3542152121952914e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+2.8085321534994011e-07 Max:+1.8427695779388513e-02 RMS:+4.6565337826623273e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-15T02:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Writing State:
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7879215756695048e+03 RMS:+9.5763238815070463e+02
+air_temperature                              | Min:+1.5988471892992084e+02 Max:+3.0532606244980235e+02 RMS:+2.4956586366595315e+02
+cloud_liquid_ice                             | Min:-1.9734683683681340e-07 Max:+3.8458166605041068e-04 RMS:+1.2223028149960539e-05
+cloud_liquid_water                           | Min:-2.9854138751711015e-07 Max:+9.5303868410558784e-04 RMS:+2.6434310486702685e-05
+eastward_wind                                | Min:-1.1070009644281917e+02 Max:+1.4163063718619000e+02 RMS:+2.1597328551287031e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-9.3068656748656082e+01 Max:+8.6682367017288428e+01 RMS:+9.3329257958988983e+00
+ozone_mass_mixing_ratio                      | Min:+1.2727838449559643e-08 Max:+1.7010093104308939e-05 RMS:+4.3536671156000684e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+2.9779557242491880e-07 Max:+1.8375216334654377e-02 RMS:+4.6492795513751002e-03
 ----------------------------------------------------------------------------------------------------
 
 StateCoupled: SOCA
 
   Valid time: 2020-12-15T03:00:00Z
-   socn   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525095
-   tocn   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
-    ssh   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
-   hocn   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065027280
-   uocn   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
-   vocn   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147
+Final state: 
+StateCoupled: FV3JEDI
+
+----------------------------------------------------------------------------------------------------
+State print | number of fields = 9 | cube sphere face size: C12
+air_pressure_thickness                       | Min:+6.0599999999999998e-01 Max:+1.7879215756695048e+03 RMS:+9.5763238815070463e+02
+air_temperature                              | Min:+1.5988471892992084e+02 Max:+3.0532606244980235e+02 RMS:+2.4956586366595315e+02
+cloud_liquid_ice                             | Min:-1.9734683683681340e-07 Max:+3.8458166605041068e-04 RMS:+1.2223028149960539e-05
+cloud_liquid_water                           | Min:-2.9854138751711015e-07 Max:+9.5303868410558784e-04 RMS:+2.6434310486702685e-05
+eastward_wind                                | Min:-1.1070009644281917e+02 Max:+1.4163063718619000e+02 RMS:+2.1597328551287031e+01
+geopotential_at_surface                      | Min:-2.6477954101562500e+02 Max:+4.9483356501111783e+04 RMS:+5.9494834270643069e+03
+northward_wind                               | Min:-9.3068656748656082e+01 Max:+8.6682367017288428e+01 RMS:+9.3329257958988983e+00
+ozone_mass_mixing_ratio                      | Min:+1.2727838449559643e-08 Max:+1.7010093104308939e-05 RMS:+4.3536671156000684e-06
+water_vapor_mixing_ratio_wrt_moist_air       | Min:+2.9779557242491880e-07 Max:+1.8375216334654377e-02 RMS:+4.6492795513751002e-03
+----------------------------------------------------------------------------------------------------
+
+StateCoupled: SOCA
+
+  Valid time: 2020-12-15T03:00:00Z
+             sea_water_salinity   min=10.7210460395083924   max=40.4416591897031168   mean=34.5443897261525521
+sea_water_potential_temperature   min=-1.8883899372702533   max=31.7004645720658580   mean=6.0175649583533612
+ sea_surface_height_above_geoid   min=-1.9244847628277935   max=0.9272826517867588   mean=-0.2767903423591664
+       sea_water_cell_thickness   min=0.0009999999999977   max=1345.6400000000003274   mean=128.6280642065003690
+    eastward_sea_water_velocity   min=-0.8581693992488438   max=0.7000954286848975   mean=-0.0002411941155065
+   northward_sea_water_velocity   min=-0.7661101215480253   max=1.4377766409421606   mean=0.0020193957336147

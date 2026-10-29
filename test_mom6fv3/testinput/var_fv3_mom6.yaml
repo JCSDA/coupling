@@ -220,16 +220,17 @@ variational:
             type: incr
 
 output:
-  FV3JEDI:
-    filetype: fms restart
-    datapath: Data/var/
-    type: an
-    exp: 3dvar.fv3
-    date: 2020-12-14T21:00:00Z
-  SOCA:
-    datadir: Data/var
-    exp: 3dvar.soca
-    type: an
+  analysis:
+    FV3JEDI:
+      filetype: fms restart
+      datapath: Data/var/
+      type: an
+      exp: 3dvar.fv3
+      date: 2020-12-14T21:00:00Z
+    SOCA:
+      datadir: Data/var
+      exp: 3dvar.soca
+      type: an
 
 test:
   reference filename: testref/var_fv3_mom6.ref
